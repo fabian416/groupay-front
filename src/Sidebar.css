@@ -1,0 +1,28 @@
+/* Sidebar.css */
+.sidebar {
+    position: fixed;   /* Fija la barra lateral para que no se mueva al hacer scroll */
+    left: 0;           /* Alinea la barra lateral a la izquierda */
+    top: 0;            /* Alinea la barra lateral arriba */
+    height: 100%;      /* Hace que la barra lateral ocupe todo el alto */
+    width: 250px;      /* Ancho fijo para la barra lateral */
+    background-color: #f7f7f7;  /* Un fondo gris claro, pero puedes cambiarlo */
+    overflow-y: auto;  /* Permite hacer scroll en la barra si el contenido es muy largo */
+}
+
+
+.sidebar-section {
+    margin-bottom: 70px;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    
+}
+
+.sidebar h3 {
+    margin-bottom: 10px;
+}
+
+button {
+    margin-bottom: 10px;
+}
