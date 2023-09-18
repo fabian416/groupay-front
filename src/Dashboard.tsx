@@ -1,10 +1,10 @@
 import React from 'react';
 
-// En Dashboard.js
-function Dashboard({ account }) {
-    
+type DashboardProps = {
+    account: string;
+};
 
-
+const Dashboard: React.FC<DashboardProps> = ({ account }) => {
     return (
         <div>
             {/* Aquí va el contenido de tu Dashboard */}
