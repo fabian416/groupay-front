@@ -33,9 +33,15 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onRequest
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const form = e.currentTarget;
-        const alias = form.alias.value;
+        let alias = form.alias.value;
+    
+        // Prepend "@" if it doesn't already start with it
+        if (!alias.startsWith("@")) {
+            alias = "@" + alias;
+        }
+    
         const email = form.email.value;
-
+    
         // Aquí, envía estos datos a tu API y registra al usuario. 
         // Luego de registrar, puedes cerrar el modal y redirigir al dashboard.
         if (walletAddress) {
