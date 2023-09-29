@@ -25,25 +25,25 @@ const Sidebar: React.FC<SidebarProps> = ({ groups = [], friends = [], changeView
 
     return (
         <div className="sidebar">
-            <h2>Crypto SplitWise</h2>
+            <h2>Squary</h2>
 
             <div className="sidebar-section">
-                <h3>Gastos</h3>
-                <button onClick={() => changeView('transactions')}>Ver Historial de Gastos</button>
+                <h3>Expenses</h3>
+                <button onClick={() => changeView('transactions')}>Transaction History</button>
             </div>
 
             <div className="sidebar-section">
                 <h3>Grupos</h3>
-                <button onClick={() => {changeView('groups'); loadGroups()}}>Ver Grupos</button>
-                <button onClick={toggleModal}>Añadir Nuevo Grupo</button>
+                <button onClick={() => {changeView('groups'); loadGroups()}}>My Groups</button>
+                <button onClick={toggleModal}>Add new Group</button>
                 {groups && groups.map(group => (
                     <p key={group.id}>{group.name}</p>
                 ))}
             </div>
 
             <div className="sidebar-section">
-                <h3>Amigos</h3>
-                <button>Añadir</button>
+                <h3>Friends</h3>
+                <button>+ Add</button>
             </div>
 
             {isModalOpen && <GroupModal closeModal={toggleModal} />}

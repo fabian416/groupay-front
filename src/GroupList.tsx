@@ -1,22 +1,24 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
-// Definimos los tipos de las props
+// Define the types of the props
 interface GroupListProps {
     userAddress: string;
     loadGroups: boolean;
 }
 
-// Definimos la estructura de un grupo
+
 interface Group {
-    _id: string;
+    id: string;
     name: string;
-    // Si hay más campos, puedes añadirlos aquí
+
 }
 
 const GroupList: React.FC<GroupListProps> = ({ userAddress, loadGroups }) => {
     const [groups, setGroups] = useState<Group[]>([]);
     const [groupsLoaded, setGroupsLoaded] = useState(false);
+    //State for manage errors
+    const [error, setError] = useState<string | null>(null);
 
     const fetchGroups = useCallback(async () => {
         try {
@@ -25,23 +27,22 @@ const GroupList: React.FC<GroupListProps> = ({ userAddress, loadGroups }) => {
             setGroupsLoaded(true);
         } catch (error) {
             console.error("Error al obtener los grupos", error);
+            setError('Error al obtener los grupos.'); 
         }
     }, [userAddress]);
 
     useEffect(() => {
-        if(loadGroups) {
+        if(loadGroups && !groupsLoaded) {
             fetchGroups();
         }
     }, [loadGroups, fetchGroups]);
 
     return (
         <div>
-            <h2>Tus grupos</h2>
-            {!groupsLoaded && (
-                <button onClick={fetchGroups}>Cargar Grupos</button>
-            )}
+            <h2>Your Groups</h2>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             {groups.map(group => (
-                <div key={group._id}>
+                <div key={group.id}>
                     <p>{group.name}</p>
                 </div>
             ))}

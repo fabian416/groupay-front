@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { UserState } from './States';  // Ajusta el path al archivo correspondiente
+import { UserState } from './States';  
 
 
 interface UserContextType {

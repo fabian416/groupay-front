@@ -14,10 +14,10 @@ type TransactionHistoryProps = {
 const TransactionHistory: React.FC<TransactionHistoryProps> = ({ transactions }) => {
     return (
         <div>
-            <h2>Historial de transacciones</h2>
+            <h2>Transaction History</h2>
             {transactions.map(tx => (
                 <div key={tx._id}>
-                    {/* Muestra la información de la transacción aquí */}
+                    {/* Show the info about the transaction */}
                     <p>{tx.amount}</p>
                 </div>
             ))}

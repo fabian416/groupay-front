@@ -2,7 +2,7 @@ import React, { FormEvent } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 
-// Estilos
+// Styles
 const customStyles = {
   content: {
     top: '50%',
@@ -42,8 +42,8 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onRequest
     
         const email = form.email.value;
     
-        // Aquí, envía estos datos a tu API y registra al usuario. 
-        // Luego de registrar, puedes cerrar el modal y redirigir al dashboard.
+        // Here, send this data to your API and register the user
+        // After register, redirect to dashboard
         if (walletAddress) {
             const response = await axios.post('http://localhost:3001/api/users/register', {
                 walletAddress, 
