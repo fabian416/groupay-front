@@ -2,7 +2,7 @@
 
 ## Our Mission
 
-[To empower users with a decentralized platform for shared expenses. Harnessing cryptocurrency and multisig tech, we foster transparency, efficiency, and security, ensuring peace of mind in group finances.]
+To empower users with a decentralized platform for shared expenses. Harnessing cryptocurrency and multisig tech, we foster transparency, efficiency, and security, ensuring peace of mind in group finances.
 
 ## Table of Contents
 
