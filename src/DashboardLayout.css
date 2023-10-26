@@ -1,0 +1,10 @@
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+
+.content-section {
+    flex-grow: 1;
+    overflow-y: auto; /* para permitir el desplazamiento si el contenido es muy largo */
+    padding: 20px; /* añade espacio alrededor del contenido */
+}

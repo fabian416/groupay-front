@@ -1,0 +1,51 @@
+.expense-modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* fondo semi-transparente negro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* para asegurarse de que aparezca encima de otros contenidos */
+}
+
+.expense-modal-content {
+    height: 80%;      /* establece el alto como un porcentaje de la pantalla */
+    max-height: 90vh; /* establece un alto máximo basado en el alto del viewport */
+    background: linear-gradient(45deg, #32a852, #ffa338);
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;  /* Aumentar el ancho */
+    max-width: 800px; /* Aumentar el ancho máximo */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    max-height: 80vh; /* Establecer un alto máximo basado en el alto del viewport */
+    overflow-y: auto; /* Permitir el desplazamiento si el contenido es demasiado alto */
+}
+
+.expense-modal-content::before { 
+    /* Añadir un pseudo-elemento para un efecto de "destello" en el fondo */
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: -1;
+    background: linear-gradient(45deg, #ffa338, #32a852, #ffa338, #32a852); /* gradient naranja a verde y viceversa */
+    transform: rotate(30deg);
+    pointer-events: none; /* Asegurarse de que no interfiera con los clics */
+    animation: shine 5s infinite alternate;
+}
+
+@keyframes shine {
+    from {
+        transform: rotate(30deg);
+    }
+    to {
+        transform: rotate(-30deg);
+    }
+}

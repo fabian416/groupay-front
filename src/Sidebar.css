@@ -1,28 +1,67 @@
 /* Sidebar.css */
-.sidebar {
-    position: fixed;   /* Fija la barra lateral para que no se mueva al hacer scroll */
-    left: 0;           /* Alinea la barra lateral a la izquierda */
-    top: 0;            /* Alinea la barra lateral arriba */
-    height: 100%;      /* Hace que la barra lateral ocupe todo el alto */
-    width: 250px;      /* Ancho fijo para la barra lateral */
-    background-color: #f7f7f7;  /* Un fondo gris claro, pero puedes cambiarlo */
-    overflow-y: auto;  /* Permite hacer scroll en la barra si el contenido es muy largo */
+:root {
+    --color-primary: #32CD32; 
+    --color-secondary: #FFA500;
+    --color-neutral: #2a2a2a;
 }
 
+.sidebar {
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 220px;
+    background: var(--color-neutral);
+    color: #f7f7f7; /* Color de texto claro */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 15px; 
+    z-index: 1000; 
+    transition: all 0.3s ease;
+}
 
 .sidebar-section {
     margin-bottom: 70px;
+    width: 100%; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Línea blanca transparente en la parte inferior */
+    padding-bottom: 20px; 
+}
+
+.sidebar h2, .sidebar h3, .sidebar button, .sidebar li {
+    text-align: center; 
+    width: 100%;
+    transition: all 0.3s ease; /* Transición suave */
 }
 
 .sidebar h2 {
     margin-bottom: 30px;
-    
+    font-weight: bold;
 }
 
 .sidebar h3 {
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 button {
     margin-bottom: 10px;
+    padding: 10px;
+    background: var(--color-primary); /* Color primario para los botones */
+    border: none;
+    border-radius: 5px;
+    color: var(--color-neutral); /* Texto oscuro */
+}
+
+.button:hover {
+    background: var(--color-secondary); /* Cambia al color secundario cuando se pasa el ratón por encima */
+}
+
+.sidebar li:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Un resplandor suave al pasar el ratón */
+}
+
+.sidebar li {
+    cursor: pointer;
+    padding: 5px 10px; /* Añade algo de padding en los lados también */
 }

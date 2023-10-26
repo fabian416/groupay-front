@@ -1,0 +1,60 @@
+/* Definir colores base */
+:root {
+    --color-primary: #FFA500; /* naranja */
+    --color-secondary: #FFA500; /* naranja */
+    --color-neutral: #2a2a2a; /* un gris oscuro */
+}
+
+
+.group-details-container {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%); /* Gradiente de verde a naranja */
+    color: var(--color-neutral); /* Texto oscuro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: all 0.3s ease; /* Transición suave */
+}
+
+.group-details-header {
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra de texto para más profundidad */
+}
+
+.gastos-section, .saldos-section {
+    background: rgba(255, 255, 255, 0.1); /* Fondo ligeramente transparente para ver el gradiente detrás */
+    border: none; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.linea-divisoria {
+    border-top: 2px solid var(--color-neutral);
+    opacity: 0.5; /* Hacerla un poco transparente */
+}
+
+/* Considera añadir un hover effect a elementos interactivos */
+.some-interactive-element:hover {
+    transform: scale(1.05); /* Aumenta un poco el tamaño al pasar el ratón */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra un poco más prominente en hover */
+}
+
+/* Si decides cambiar la fuente, Google Fonts es un buen recurso. Por ejemplo: */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.button-add, .button-settle {
+    background-color: var(--color-neutral); /* Hace que el fondo del botón sea negro */
+    color: #FFFFFF; /* Hace que el texto del botón sea blanco */
+    border: none;
+    padding: 10px 15px; /* Ajustar según tus necesidades */
+    border-radius: 5px;
+    transition: all 0.3s ease; /* Transición suave */
+    margin-right: 10px;
+
+    /* Añadir un efecto hover para mejorar la interactividad */
+    &:hover {
+        background-color: #1a1a1a; /* Un tono de gris más claro para el hover */
+    }
+}
+

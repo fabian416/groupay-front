@@ -8,11 +8,12 @@ import { UserState } from './States';
 import { ethers } from 'ethers';
 
 interface HomePageProps {
-    setAccount: Dispatch<SetStateAction<string>>;
+    setAccount: (newAccount: string) => void;
     setUserState: Dispatch<SetStateAction<UserState>>;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ setAccount, setUserState }) => {
+
+const HomePage: React.FC<HomePageProps> = ({ setAccount, setUserState}) => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [wasRegistered, setWasRegistered] = useState<boolean>(false);
     const [connectedAddress, setConnectedAddress] = useState<string | null>(null); 
@@ -25,6 +26,7 @@ const HomePage: React.FC<HomePageProps> = ({ setAccount, setUserState }) => {
         }
     }, [wasRegistered, connectedAddress, navigate]);
 
+
     async function connectWallet() {
         if (typeof window.ethereum !== 'undefined') {
             try {
@@ -34,6 +36,8 @@ const HomePage: React.FC<HomePageProps> = ({ setAccount, setUserState }) => {
                 const signer = provider.getSigner();
                 const connectedAddress = await signer.getAddress();
                 setConnectedAddress(connectedAddress);
+                setAccount(connectedAddress);
+    
 
                 const response = await axios.post('http://localhost:3001/api/users/authenticate', {
                     walletAddress: connectedAddress
