@@ -91,7 +91,7 @@ const ExpenseModal: React.FC<ExpenseModalProps> = ({ closeModal, groupId, member
     return (
         <div className="expense-modal-background">
             <div className="expense-modal-content">
-                <button onClick={closeModal}>Close</button>
+                <button className='close-button' onClick={closeModal}>Close</button>
                 <h2>Add Shared Expense</h2>
                 <div>
                     <label>
@@ -127,7 +127,7 @@ const ExpenseModal: React.FC<ExpenseModalProps> = ({ closeModal, groupId, member
                         )
                     ))}
                 </div>
-                <button onClick={handleSubmit}>Send Expense</button>
+                <button className='modal-button' onClick={handleSubmit}>Send Expense</button>
             </div>
         </div>
     );

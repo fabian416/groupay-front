@@ -9,6 +9,9 @@ import UserContext from './UserContext';
 import { queryClient } from './query.config';
 import { QueryClientProvider } from 'react-query';
 import DashboardLayout from './DashboardLayout';
+import { Buffer } from 'buffer';
+
+window.Buffer = Buffer;
 
 Modal.setAppElement('#root');
 

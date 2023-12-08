@@ -26,7 +26,7 @@ const DashboardLayout: React.FC<{ account: string }> = ({ account }) => {
     const context = useContext(UserContext);
 
     if (!context) {
-        throw new Error("DashboardLayout debe estar dentro del proveedor UserContext");
+        throw new Error("DashboardLayout must be inside of the provider UserContext");
     }
 
     const [selectedGroup, setSelectedGroup] = useState<Group | null>(null);
@@ -46,11 +46,9 @@ const DashboardLayout: React.FC<{ account: string }> = ({ account }) => {
         { enabled: !!account } // Only execute the request if account is True (not empty or undefined)
     );
     
-
-    // Lógica similar para fetchFriends...
     
     const [transactions, setTransactions] = useState<Transaction[]>([
-        // tus datos iniciales
+ 
     ]);
 
 

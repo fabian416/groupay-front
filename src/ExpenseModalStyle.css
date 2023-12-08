@@ -12,19 +12,19 @@
 }
 
 .expense-modal-content {
-    height: 80%;      /* establece el alto como un porcentaje de la pantalla */
-    max-height: 90vh; /* establece un alto máximo basado en el alto del viewport */
+    height: 60%;      /* Reducir el alto del modal */
     background: linear-gradient(45deg, #32a852, #ffa338);
     padding: 20px;
     border-radius: 8px;
-    width: 90%;  /* Aumentar el ancho */
-    max-width: 800px; /* Aumentar el ancho máximo */
+    width: 70%;       /* Reducir el ancho del modal */
+    max-width: 600px; /* Reducir el ancho máximo */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
-    max-height: 80vh; /* Establecer un alto máximo basado en el alto del viewport */
-    overflow-y: auto; /* Permitir el desplazamiento si el contenido es demasiado alto */
+    max-height: 70vh; /* Reducir el alto máximo basado en el alto del viewport */
+    overflow-y: auto;
 }
+
 
 .expense-modal-content::before { 
     /* Añadir un pseudo-elemento para un efecto de "destello" en el fondo */
@@ -48,4 +48,39 @@
     to {
         transform: rotate(-30deg);
     }
+}
+
+/* Estilo para el botón Send Expense */
+.modal-button {
+    background-color: black; /* Fondo negro */
+    color: white;            /* Letras blancas para contraste */
+    border: none;
+    padding: 10px 20px;      /* Ajustar el padding para el tamaño deseado */
+    border-radius: 5px;
+    cursor: pointer;         /* Cambio de cursor al pasar el mouse */
+    transition: 0.3s;        /* Suave transición para el hover */
+    font-weight: bold;       /* Hacer la fuente más gruesa para resaltarla */
+}
+
+.modal-button:hover {
+    background-color: #333; /* Oscurecer un poco al pasar el mouse */
+}
+
+/* Estilo para el botón close */
+.close-button {
+    background-color: black; /* Fondo negro */
+    color: white;            /* Letras blancas para contraste */
+    border: none;
+    padding: 5px 10px;       /* Padding más pequeño porque es solo una "X" */
+    border-radius: 50%;      /* Hacerlo circular */
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 20px;         /* Tamaño de fuente más grande para la "X" */
+    position: absolute;      /* Posicionarlo de manera absoluta */
+    top: 10px;               /* Ajustar según la ubicación deseada en el modal */
+    right: 10px;
+}
+
+.close-button:hover {
+    background-color: #333; /* Oscurecer un poco al pasar el mouse */
 }

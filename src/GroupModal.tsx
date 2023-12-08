@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect, useMemo } from 'react';
-import { ethers } from 'ethers';
-import { SafeFactory } from '@safe-global/protocol-kit';
-import { EthersAdapter } from '@safe-global/protocol-kit';
+import { ethers, ContractInterface } from 'ethers';
+import { SafeFactory,EthersAdapter } from '@safe-global/protocol-kit';
 import axios from 'axios';
 import UserContext from './UserContext';
 import './GroupModal.css';
+import  SquaryContractABIJson from './abi/SquaryContractAbi.json';
+
 
 // Define the types of the props
 interface GroupModalProps {
@@ -22,13 +23,16 @@ const GroupModal: React.FC<GroupModalProps> = ({ closeModal }) => {
     const [safeAddress, setSafeAddress] = useState<string | null>(null);
     const [signatureThreshold, setSignatureThreshold] = useState<number | null>(null);
     const [customThreshold, setCustomThreshold] = useState<number | null>(null);
-    const userContextValue = useContext(UserContext); // get the value of context
+    const userContextValue = useContext(UserContext); 
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const ethAdapter = new EthersAdapter({
         ethers,
         signerOrProvider: signer
     });
+   
+    const SquaryContractABI = SquaryContractABIJson.abi; 
+    const SQUARY_CONTRACT_ADDRESS = "0xAA04456f31a6177C4CE0Cf2655e034177E873776"; 
     // Verifies if the value of the context is null or not
     if (!userContextValue) {
         throw new Error('UserContext must be used within a UserContextProvider');
@@ -122,13 +126,13 @@ const GroupModal: React.FC<GroupModalProps> = ({ closeModal }) => {
                 owner: account,
                 signingMethod: signingMethod,
                 signatureThreshold: signatureThreshold,
-                selected_signers : updatedOwnerAddresses
+                selected_signers: updatedOwnerAddresses
             });
     
             if (!updatedInvitations.every(invite => isAddressFormatCorrect(invite.aliasOrWallet))) {
                 console.error("Algunas invitaciones no tienen direcciones Ethereum válidas");
                 return;
-            }            
+            }
     
             const response = await axios.post('http://localhost:3001/api/groups/create', {
                 name: groupName,
@@ -136,8 +140,8 @@ const GroupModal: React.FC<GroupModalProps> = ({ closeModal }) => {
                 invitees: updatedInvitations,
                 owner: account,
                 signingMethod: signingMethod,
-                signatureThreshold: signatureThreshold ,
-                selected_signers: updatedOwnerAddresses 
+                signatureThreshold: signatureThreshold,
+                selected_signers: updatedOwnerAddresses
             });
     
             if (!updatedOwnerAddresses.every(isAddressFormatCorrect)) {
@@ -147,41 +151,65 @@ const GroupModal: React.FC<GroupModalProps> = ({ closeModal }) => {
             }
     
             const safeAccountConfig = {
-                owners: updatedOwnerAddresses,  
-                threshold: signatureThreshold as number 
+                owners: updatedOwnerAddresses,
+                threshold: signatureThreshold as number
+            };
+            const options = {
+                gasLimit: ethers.utils.hexlify(1000000),
+                maxPriorityFeePerGas: ethers.utils.parseUnits('1', 'gwei').toString(),
+                maxFeePerGas: ethers.utils.parseUnits('2', 'gwei').toString()
             };
     
             if (response.data?.data?.id) {
                 groupId = response.data.data.id;
-            }
     
-            if (response.data) {
-                console.log("updatedOwnerAddresses", updatedOwnerAddresses); 
-        
-                closeModal();
+                console.log("updatedOwnerAddresses", updatedOwnerAddresses);
+    
+                // Crear la Gnosis Safe
                 const safeFactory = await SafeFactory.create({ ethAdapter: ethAdapter });
-                const safeSdk = await safeFactory.deploySafe({ safeAccountConfig });
-        
+                const safeSdk = await safeFactory.deploySafe({ safeAccountConfig, options });
+    
                 const safeAddress = await safeSdk.getAddress();
-        
-                // call to your back-end to update the address of Gnosis Safe
+    
+                // Actualizar la dirección de Gnosis Safe en el backend
                 const updateResponse = await axios.post('http://localhost:3001/api/groups/updateGnosisAddress', {
-                    groupId: groupId, 
+                    groupId: groupId,
                     gnosissafeaddress: safeAddress
                 });
-        
-                //  Manage the response of the server here
+    
+                // Verificar la respuesta del servidor
                 if (updateResponse.data.message === "Gnosis Safe address updated successfully.") {
                     console.log("Dirección de Gnosis Safe actualizada en el backend.");
+    
+                    // Instanciar el contrato Squary con el signer
+                    const squaryContract = new ethers.Contract(
+                        SQUARY_CONTRACT_ADDRESS,
+                        SquaryContractABI,
+                        signer
+                    );
+    
+                    // Llamar a la función createGroup del contrato Squary
+                    try {
+                        const tx = await squaryContract.createGroup(
+                            safeAddress,
+                            updatedOwnerAddresses
+                        );
+                        await tx.wait(); // Esperar a que la transacción sea minada
+                        console.log(`Grupo creado con éxito en Squary: ${tx.hash}`);
+                        closeModal();
+                    } catch (error) {
+                        console.error("Error al registrar el grupo en Squary", error);
+                        closeModal();
+                    }
                 } else {
                     console.warn("Hubo un problema al actualizar la dirección en el backend.");
                 }
-                
             }
         } catch (error) {
             console.error("Error al crear el grupo", error);
         }
     }
+    
     
     const addInvitation = () => {
         setInvitations([...invitations, { aliasOrWallet: '', email: '' }]);
