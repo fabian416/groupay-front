@@ -1,67 +1,87 @@
 /* Sidebar.css */
+
 :root {
-    --color-primary: #32CD32; 
-    --color-secondary: #FFA500;
-    --color-neutral: #2a2a2a;
+    --color-primary: #FFA500; /* Naranja para botones y elementos interactivos */
+    --color-background: #121312; /* Fondo oscuro para la barra lateral */
+    --color-text: #FFFFFF; /* Color de texto blanco para contraste */
+    --color-hover: #e69500; /* Un naranja más oscuro para estado hover */
+    --color-border: rgba(255, 255, 255, 0.25); /* Borde sutil en blanco */
+    --sidebar-width: 370px; /* Ancho de la barra lateral */
+    --button-font-size: 1rem; /* Tamaño de fuente para los botones */
+    --button-padding: 15px 20px; /* Padding para los botones */
+    --section-margin-bottom: 1.5rem; /* Espacio debajo de las secciones */
 }
 
 .sidebar {
     left: 0;
     top: 0;
     height: 100vh;
-    width: 220px;
-    background: var(--color-neutral);
-    color: #f7f7f7; /* Color de texto claro */
+    width: var(--sidebar-width);
+    background: var(--color-background);
+    color: var(--color-text);
+    border-right: 2px solid var(--color-border);
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    padding: 15px; 
-    z-index: 1000; 
+    position: fixed;
+    align-items: center;
+    padding: 15px;
+    z-index: 1000;
     transition: all 0.3s ease;
+    box-shadow: 1px 0 5px rgba(255, 255, 255, 0.1); /* Sombra sutil en blanco para dar profundidad */
 }
 
 .sidebar-section {
-    margin-bottom: 70px;
-    width: 100%; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Línea blanca transparente en la parte inferior */
-    padding-bottom: 20px; 
+    margin-bottom: var(--section-margin-bottom);
+    width: 100%;
+    border-bottom: 1px solid var(--color-border); /* Bordes sutiles en blanco */
+    padding-bottom: 20px;
 }
 
 .sidebar h2, .sidebar h3, .sidebar button, .sidebar li {
-    text-align: center; 
+    text-align: center;
     width: 100%;
-    transition: all 0.3s ease; /* Transición suave */
+    transition: all 0.3s ease;
 }
 
 .sidebar h2 {
     margin-bottom: 30px;
     font-weight: bold;
+    color: var(--color-primary); /* Naranja como color de acento */
+    font-size: 1.5rem;
 }
 
 .sidebar h3 {
     margin-bottom: 10px;
     font-weight: bold;
+    color: var(--color-text);
+    font-size: 1.2rem;
 }
 
 button {
     margin-bottom: 10px;
-    padding: 10px;
-    background: var(--color-primary); /* Color primario para los botones */
+    padding: var(--button-padding);
+    background: var(--color-primary);
     border: none;
     border-radius: 5px;
-    color: var(--color-neutral); /* Texto oscuro */
+    color: white; /* Texto blanco para contraste */
+    font-weight: bold;
+    font-size: var(--button-font-size);
 }
 
-.button:hover {
-    background: var(--color-secondary); /* Cambia al color secundario cuando se pasa el ratón por encima */
-}
-
-.sidebar li:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Un resplandor suave al pasar el ratón */
+button:hover {
+    background: var(--color-hover);
+    cursor: pointer;
 }
 
 .sidebar li {
     cursor: pointer;
-    padding: 5px 10px; /* Añade algo de padding en los lados también */
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    color: var(--color-text); /* Texto blanco para contraste */
+}
+
+.sidebar li:hover {
+    background-color: rgba(255, 165, 0, 0.2); /* Resplandor suave al pasar el ratón */
 }

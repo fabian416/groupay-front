@@ -1,0 +1,44 @@
+.start-settle-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente para oscurecer la vista detrás del modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Asegúrate de que el z-index sea más alto que otros elementos */
+}
+.start-settle-modal-content p {
+    color: #333; /* Cambiar a un color oscuro para que contraste con un fondo claro */
+    /* Agregar más estilos si es necesario */
+}
+
+.start-settle-modal-content {
+    background-color: #fff; /* Fondo blanco para el modal */
+    color: #333; /* Color de texto oscuro para contraste */
+    padding: 40px; /* Espaciado interno para el contenido del modal */
+    border-radius: 10px; /* Bordes redondeados del modal */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad al modal */
+    width: 40%; /* Ancho del modal como porcentaje del ancho de la ventana */
+    max-width: 500px; /* Ancho máximo del modal para pantallas grandes */
+    text-align: center; /* Alineación del texto al centro */
+}
+
+.start-settle-modal-content button {
+    background-color: #ffa500; /* Botones con color de acento */
+    color: white; /* Texto blanco para contraste */
+    border: none; /* Sin borde */
+    padding: 15px 30px; /* Espaciado interno para los botones */
+    margin: 10px; /* Margen alrededor de los botones */
+    border-radius: 5px; /* Bordes redondeados de los botones */
+    cursor: pointer; /* Cursor tipo mano al pasar sobre los botones */
+    font-weight: bold; /* Texto en negrita para los botones */
+    font-size: 1rem; /* Tamaño del texto de los botones */
+    transition: background-color 0.3s; /* Transición suave al cambiar de color de fondo */
+}
+
+.start-settle-modal-content button:hover {
+    background-color: #cc8400; /* Color de fondo al pasar el cursor por los botones */
+}

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Box-sizing reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.modalOverlay {
+    position: fixed; /* o 'absolute' dependiendo de tu layout */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f8f9f9;/* o cualquier otro color de fondo que prefieras */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.modalContent {
+    position: relative;
+    background-color: #FAFAFA;/* Azul claro */
+    padding: 60px;
+    border-radius: 20px;
+    border: none; /* Omitir el borde para un diseño más limpio */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más suave */
+    border-radius: 40px; /* Bordes más redondeados */
+    max-width: 700px;
+    width: 90%;
+    transition: transform 0.9s ease;
+}
+
+.modalTitle {
+    font-size: 2.3em; /* O el tamaño que prefieras */
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 40px; /* Asegúrate de dejar espacio antes de los campos de formulario */
+  }
+/* Estilos para los inputs y el botón submit */
+.formInput {
+    margin-bottom: 30px; /* Espacio entre los inputs y las explicaciones */
+    padding: 19px 10px; /* Padding aumentado para más altura */
+    border: 1px solid #BDBDBD;
+    border-radius: 15px; /* Bordes más redondeados para los inputs */
+    width: calc(100% - 22px); /* Ajuste del ancho */
+    font-size: 1.3em;
+}
+
+.submitButton {
+  background-color: #FFA726; /* Naranja distintivo */
+  color: white;
+  border: 1px solid #BDBDBD;
+  border-radius: 15px; /* Bordes redondeados para el botón */
+  padding: 14px 10px; /* Padding ajustado */
+  font-size: 1.3em;
+  width: calc(100% - 22px); /* El mismo ancho que los inputs */
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+.submitButton:hover {
+    background-color: #e67e22; /* Un tono ligeramente más claro para el hover */
+  }
+
+
+.submitButton:active {
+    background-color: #d35400; /* Un tono más oscuro para el active */
+  }
+  
+
+/* Nuevo estilo para el texto explicativo */
+.explanationText {
+    font-size: 1.3em;
+    margin-bottom: 0px;
+    color: #555;
+    text-align: left;
+    margin-top: -20px;
+    margin-bottom: 30px;
+   
+  }
+  
+  
+  @media (max-width: 768px) {
+    .modalContent {
+      width: 95%;
+      padding: 30px;
+    }
+  
+    .formInput, .submitButton {
+      width: calc(100% - 60px); /* Ajustar el ancho en móviles para coincidir con el nuevo padding */
+    }
+  }
+
+/* Agrega aquí más estilos que necesites */

@@ -1,0 +1,24 @@
+.connect-button {
+    background-color: #FFA726; /* Tu color naranja distintivo para el fondo */
+    color: white; /* Texto blanco para contrastar con el fondo naranja */
+    padding: 18px 100px; /* Aumenta el padding horizontal para hacer el botón más largo */
+    font-size: 1.3em; /* Ajusta según la legibilidad deseada */
+    border: none; /* Sin borde para un look más limpio */
+    border-radius: 22px; /* Redondez que complementa el diseño del modal */
+    cursor: pointer; /* Cursor de mano al pasar el ratón por encima para indicar que es clickable */
+    transition: background-color 0.4s ease; /* Transición suave para el color de fondo al pasar el ratón por encima */
+    display: inline-block; /* Esto asegura que el padding se aplique correctamente */
+    width: auto; /* Esto permitirá que el ancho del botón dependa del contenido y padding */
+}
+
+.connect-button:hover {
+    background-color: #e67e22; /* Un tono más claro de naranja para el hover */
+}
+
+.connect-button:active {
+    background-color: #d35400; /* Un tono más oscuro para cuando se presiona el botón */
+}
+
+.connect-button:focus {
+    outline: none; /* Elimina el contorno que se muestra cuando el botón está enfocado */
+}

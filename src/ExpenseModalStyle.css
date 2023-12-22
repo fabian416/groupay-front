@@ -4,83 +4,69 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* fondo semi-transparente negro */
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente para enfocar atención en modal */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* para asegurarse de que aparezca encima de otros contenidos */
+    z-index: 1000; /* Asegúrate de que está por encima de otros contenidos */
 }
 
 .expense-modal-content {
-    height: 60%;      /* Reducir el alto del modal */
-    background: linear-gradient(45deg, #32a852, #ffa338);
+    background: #fff; /* Fondo blanco para un aspecto limpio y minimalista */
     padding: 20px;
     border-radius: 8px;
-    width: 70%;       /* Reducir el ancho del modal */
-    max-width: 600px; /* Reducir el ancho máximo */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-    max-height: 70vh; /* Reducir el alto máximo basado en el alto del viewport */
-    overflow-y: auto;
+    width: 50%;       /* Ancho del modal ajustable según preferencia */
+    max-width: 600px; /* Ancho máximo para contener el contenido de forma adecuada */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para resaltar el modal */
+    overflow-y: auto; /* Permite desplazamiento si el contenido es más largo que el modal */
+    max-height: 80vh; /* Altura máxima para asegurar que se ajusta en todas las pantallas */
 }
 
-
-.expense-modal-content::before { 
-    /* Añadir un pseudo-elemento para un efecto de "destello" en el fondo */
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    z-index: -1;
-    background: linear-gradient(45deg, #ffa338, #32a852, #ffa338, #32a852); /* gradient naranja a verde y viceversa */
-    transform: rotate(30deg);
-    pointer-events: none; /* Asegurarse de que no interfiera con los clics */
-    animation: shine 5s infinite alternate;
-}
-
-@keyframes shine {
-    from {
-        transform: rotate(30deg);
-    }
-    to {
-        transform: rotate(-30deg);
-    }
-}
-
-/* Estilo para el botón Send Expense */
+/* Botones con estilo acorde a tu paleta de colores */
 .modal-button {
-    background-color: black; /* Fondo negro */
-    color: white;            /* Letras blancas para contraste */
+    background-color: var(--color-primary);  /* Color principal de tu paleta */
+    color: white;            
     border: none;
-    padding: 10px 20px;      /* Ajustar el padding para el tamaño deseado */
+    padding: 10px 20px;      
     border-radius: 5px;
-    cursor: pointer;         /* Cambio de cursor al pasar el mouse */
-    transition: 0.3s;        /* Suave transición para el hover */
-    font-weight: bold;       /* Hacer la fuente más gruesa para resaltarla */
+    cursor: pointer;         
+    transition: 0.3s;        
+    font-weight: bold;       
 }
 
 .modal-button:hover {
-    background-color: #333; /* Oscurecer un poco al pasar el mouse */
+    background-color: var(--color-hover); /* Color de hover definido en tus variables root */
 }
 
-/* Estilo para el botón close */
 .close-button {
-    background-color: black; /* Fondo negro */
-    color: white;            /* Letras blancas para contraste */
+    background-color: var(--color-secondary); /* Color secundario de tu paleta */
+    color: white;            
     border: none;
-    padding: 5px 10px;       /* Padding más pequeño porque es solo una "X" */
-    border-radius: 50%;      /* Hacerlo circular */
+    padding: 5px 10px;       
+    border-radius: 50%;      
     cursor: pointer;
     transition: 0.3s;
-    font-size: 20px;         /* Tamaño de fuente más grande para la "X" */
-    position: absolute;      /* Posicionarlo de manera absoluta */
-    top: 10px;               /* Ajustar según la ubicación deseada en el modal */
+    font-size: 20px;         
+    position: absolute;      
+    top: 10px;               
     right: 10px;
 }
 
 .close-button:hover {
-    background-color: #333; /* Oscurecer un poco al pasar el mouse */
+    background-color: var(--color-hover); /* Oscurecer un poco al pasar el mouse */
+}
+.expense-modal-content h2,
+.expense-modal-content label,
+.expense-modal-content p {
+    color: #333; /* Un color oscuro para un contraste adecuado */
+    /* ... Añade más estilos si es necesario ... */
+}
+.expense-modal-content input[type="text"],
+.expense-modal-content input[type="number"],
+.expense-modal-content select {
+    /* ... */
+    color: #333; /* Color de texto oscuro para mejorar la legibilidad */
+    background: #f9f9f9; /* Un fondo ligeramente gris para los campos de entrada */
+    border: 1px solid #ddd; /* Un borde sutil para definir los límites de los campos */
+    /* ... */
 }

@@ -1,2 +1,1 @@
-
-export type UserState = 'UNKNOWN' | 'EXISTING' | 'NEW';
+export type UserState = 'UNKNOWN' | 'EXISTING' | 'NEW'
